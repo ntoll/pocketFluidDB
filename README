@@ -8,5 +8,19 @@ itself for hosting.
 I'm in the middle of writing a blog post detailing what I did and why and will
 reference it in this README when I've finished it.
 
+It's *VERY* incomplete - just a proof of concept really. Currently you can:
+
+* Sign in/out
+* View the namespaces/tags in your root namespace on FluidDB
+* Search for objects using the simple QL that comes with FluidDB
+
+To use it properly you'll need to register for a username and password here:
+
+http://fluidinfo.com/accounts/new
+
+You can see it in action here (although this might change):
+
+http://sandbox.fluidinfo.com/objects/3d8808e5-e546-4db9-91ce-6fa34c2665e0/ntoll/pocketFluidDB/index.html#/
+
 Nicholas.
 http://ntoll.org/contact
