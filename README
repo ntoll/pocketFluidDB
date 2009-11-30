@@ -22,5 +22,13 @@ You can see it in action here (although this might change):
 
 http://sandbox.fluidinfo.com/objects/3d8808e5-e546-4db9-91ce-6fa34c2665e0/ntoll/pocketFluidDB/index.html#/
 
+The good stuff is mainly in the following files:
+
+* index.html - the single page used to "render" the application
+* javascripts/fluiddb.js - a slightly modified version of E.Carnevale's script
+for connecting with FluidDB from Javascript.
+* javascripts/pocketfluiddb.js - the actual application itself (based upon the
+Sammy framework)
+
 Nicholas.
 http://ntoll.org/contact
