@@ -46,6 +46,14 @@ body {
     padding: 2px 4px 2px 4px;
 }
 
+.tag_actions {
+    font-size: 0.8em;
+}
+
+.delete a {
+    color: red;
+}
+
 img {
   border: 0;
   vertical-align: middle;

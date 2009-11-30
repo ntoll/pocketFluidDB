@@ -26,6 +26,29 @@
             </ul>
             <div id="tags">
                 <h2>Tags and Namespaces</h2>
+                <div id="namespace_details">
+                    <h3>Viewing <span id="path">Unknown</span></h3>
+                    <p>Description:</p>
+                    <div id="namespace_actions">
+                        <q><em><span id="namespace_description">Unknown description...</span></em></q>
+                        <p>
+                            <a href="#" onclick="$('#namespace_actions').hide();$('#namespace_edit').fadeIn('slow');">Edit Namespace Description</a>
+                            <span class="delete_namespace" style="display: none;"> |
+                                <a href="#" class="delete" onclick="return(confirm('Are you sure? (This step cannot be undone)'));">Delete Namespace</a>
+                            </span>
+                        </p>
+                    </div>
+                    <div id="namespace_edit" style="display: none;">
+                        <form method="POST" action="#/namespace/edit">
+                            <p>
+                            <textarea name="description" rows="4" cols="64" id="namespace_description_textarea">Unknown...</textarea><br/>
+                            <input name="path" id="namespace_path" type="hidden"/>
+                            <input type="submit" value="Submit"/> 
+                            <a href="#" onclick="$('#namespace_edit').hide();$('#namespace_actions').fadeIn('slow');">Cancel</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
                 <div id="namespace_list"></div>
                 <div id="tag_list"></div>
                 <div id="tag_content">

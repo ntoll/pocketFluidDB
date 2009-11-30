@@ -37,22 +37,34 @@
         /*
          * Given the result of a GET against a namespace, this function displays
          * any child namespaces and tags.
+         *
+         * path: the path of the namespace that is currently being displayed
+         * data: the results from FluidDB containing the contents of the
+         * namespace
+         * context: the Sammy context
          */
-        function update_tags(data, context){
+        function update_tags(path, data, context){
             var obj = JSON.parse(data); 
-            // empty the element
+            // empty the helpful text message element
             $('#tag_content').empty();
+            // Populate some of the items
+            $('textarea#namespace_description_textarea').val(obj.description);
+            $('#namespace_description').html(obj.description);
+            $('#path').html(path);
+            $('#namespace_path').html(path);
             // cache the two jQuery objects
             $namespace_list = $('#namespace_list');
             $tag_list = $('#tag_list');
             // add namespace
             $.each(obj.namespaceNames, function(t, namespace) {
-                context.partial('templates/namespace.template', { namespace: namespace}, function(rendered) { $namespace_list.append(rendered)});
+                var item = { "name": namespace, "path": path};
+                context.partial('templates/namespace.template', { item: item}, function(rendered) { $namespace_list.append(rendered)});
             });
              
             // add tags
             $.each(obj.tagNames, function(t, tag) {
-                context.partial('templates/tag.template', { tag: tag}, function(rendered) { $tag_list.append(rendered)});
+                var item = { "name": tag, "path": path};
+                context.partial('templates/tag.template', { item: item}, function(rendered) { $tag_list.append(rendered)});
             });
         }
 
@@ -127,8 +139,9 @@
         this.get('#/', function(context) {
             if (context.auth) {
                 context.partial('templates/logout.template', { username: context.username }, function(rendered) { $('#login').replaceWith(rendered)});
-                var url = 'namespaces/'+context.username+'?returnDescription=True&returnNamespaces=True&returnTags=True';
-                fluidDB.get(url, function(data){update_tags(data, context)}, true, context.auth);
+                var path = 'namespaces/'+context.username;
+                var url = path+'?returnDescription=True&returnNamespaces=True&returnTags=True';
+                fluidDB.get(url, function(data){update_tags(path, data, context)}, true, context.auth);
             } else {
                 context.partial('templates/login.template', null, function(rendered) { $('#login').replaceWith(rendered)});
             }
