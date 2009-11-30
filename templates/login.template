@@ -1,0 +1,11 @@
+<div id="login">
+    <form method="POST" action="#/login">
+    <fieldset id="login_box">
+        <legend>Log in</legend>
+        <label for="username">Username:</label><input type="text" name="username"/>
+        <label for="password">Password:</label><input type="password"
+        name="password"/><br/>
+        <input type="submit" value="Log in"/>
+    </fieldset>
+    </form>
+</div>

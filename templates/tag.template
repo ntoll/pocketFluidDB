@@ -1,0 +1,4 @@
+<div class="tag_instance">
+    <img src="http://sandbox.fluidinfo.com/objects/3d8808e5-e546-4db9-91ce-6fa34c2665e0/ntoll/pocketFluidDB/images/tag.png" alt="<%= tag %>" />
+    <%= tag %>
+</div>

@@ -1,0 +1,72 @@
+/******************************************************
+ *  json store                 *
+\*****************************************************/
+body {
+  font-family: "Lucida Grande", Lucida, Helvetica, Arial, sans-serif;
+  background: #FFF;
+  color: #333;
+  margin: 0px;
+  padding: 0px;
+}
+
+#header {
+  background: #BBBBDD;
+  margin: 0px;
+  padding: 10px 20px 30px 20px;
+}
+#header h1 {
+  font-family: Inconsolata, Monaco, Courier, mono;
+  color: #FFF;
+  margin: 0px;
+}
+
+#login {
+    float:right;
+    font-size: 0.8em;
+}
+
+#login label {
+    float: left;
+    text-align: right;
+    margin: 0.5em 1em;
+    clear: both;
+}
+
+#login input {
+    float: right;
+    margin: .5em 0;
+}
+
+#login br {
+    clear: both;
+}
+
+#login fieldset {
+    border: 1px solid #000;
+    padding: 2px 4px 2px 4px;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+.item {
+  float:left;
+  width: 250px;
+  text-align:center;
+  font-size: 12px;
+}
+.item-title {
+  font-weight: bold;
+}
+.item-artist {
+  font-weight: bold;
+  font-size: 14px;
+}
+.item-detail .item-image {
+  float:left;
+}
+.item-detail .item-info {
+  padding: 100px 10px 0px 10px;
+}
