@@ -27,8 +27,8 @@ The good stuff is mainly in the following files:
 * index.html - the single page used to "render" the application
 * javascripts/fluiddb.js - a slightly modified version of E.Carnevale's script
 for connecting with FluidDB from Javascript.
-* javascripts/pocketfluiddb.js - the actual application itself (based upon the
-Sammy framework)
+* javascripts/pocketfluiddb.js - the application itself (based upon the Sammy 
+framework)
 
 Nicholas.
 http://ntoll.org/contact
