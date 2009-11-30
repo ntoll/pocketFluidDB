@@ -1,0 +1,12 @@
+PocketFluidDB is a simple "show and tell" type project to demonstrate how to
+write a javascript based application for interacting with FluidDB.
+
+It uses the Sammy framework (http://code.quirkey.com/sammy/index.html), a 
+modified jsFluidDB script (http://github.com/ecarnevale/jsFluidDB) and FluidDB
+itself for hosting.
+
+I'm in the middle of writing a blog post detailing what I did and why and will
+reference it in this README when I've finished it.
+
+Nicholas.
+http://ntoll.org/contact
