@@ -42,14 +42,17 @@
             var obj = JSON.parse(data); 
             // empty the element
             $('#tag_content').empty();
+            // cache the two jQuery objects
+            $namespace_list = $('#namespace_list');
+            $tag_list = $('#tag_list');
             // add namespace
             $.each(obj.namespaceNames, function(t, namespace) {
-                context.partial('templates/namespace.template', { namespace: namespace}, function(rendered) { $('#namespace_list').append(rendered)});
+                context.partial('templates/namespace.template', { namespace: namespace}, function(rendered) { $namespace_list.append(rendered)});
             });
              
             // add tags
             $.each(obj.tagNames, function(t, tag) {
-                context.partial('templates/tag.template', { tag: tag}, function(rendered) { $('#tag_list').append(rendered)});
+                context.partial('templates/tag.template', { tag: tag}, function(rendered) { $tag_list.append(rendered)});
             });
         }
 
@@ -58,20 +61,21 @@
          */
         function search_results(data, context){
             var obj = JSON.parse(data);
+            // cache the jQuery object
+            var $search_results = $('#search_results');
             // empty the element
-            $('#search_results').empty();
+            $search_result.empty();
             // add the results
-            $('#search_results').append('<h2>Results</h2>');
-            $('#search_results').append('<p>Objects with the following ids match your query:</p>');
-            $('#search_results').append('<ul>');
+            var results = '<h2>Results</h2><p>Objects with the following ids match your query:</p><ul>';
             if (obj.ids.length>0) {
                 $.each(obj.ids, function(o, object_id) {
-                    context.partial('templates/result.template', { obj: object_id}, function(rendered) { $('#search_results').append(rendered)});
+                    context.partial('templates/result.template', { obj: object_id}, function(rendered) { results += rendered;});
                 });
             } else {
-                $('#search_results').append('None found. Please try again...');
+                results += '<li>None found. Please try again...</li>';
             }
-            $('#search_results').append('</ul>');
+            results += '</ul>';
+            $search_results.append(results);
         }
 
         /**********************************************************************

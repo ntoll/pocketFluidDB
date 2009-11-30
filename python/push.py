@@ -31,7 +31,10 @@ def processDirectoryIntoNamespace(directory, last_update, credentials, object):
     directory_path = directory[0]
     logging.info('Checking directory %s'%directory_path)
     # We ignore hidden directories
-    if directory_path.startswith('./') or directory_path == '.':
+    if directory_path.find('.DS_Store') >= 0 or directory_path.find('.git') >= 0:
+        logging.info('Ignoring GIT related directory')
+        return
+    elif directory_path.startswith('./') or directory_path == '.':
         logging.info('OK')
     else:
         logging.info('Ignoring hidden directory')
