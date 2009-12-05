@@ -56,7 +56,7 @@
             $namespace_list = $('#namespace_list');
             $tag_list = $('#tag_list');
             // add namespace
-            $.each(obj.namespaceNames, function(t, namespace) {
+            $.each(obj.namespaceNames, function(n, namespace) {
                 var item = { "name": namespace, "path": path};
                 context.partial('templates/namespace.template', { item: item}, function(rendered) { $namespace_list.append(rendered)});
             });
@@ -76,18 +76,17 @@
             // cache the jQuery object
             var $search_results = $('#search_results');
             // empty the element
-            $search_result.empty();
+            $search_results.empty();
             // add the results
-            var results = '<h2>Results</h2><p>Objects with the following ids match your query:</p><ul>';
+            $search_results.append('<h2>Results</h2><p>Objects with the following ids match your query:</p><ul>');
             if (obj.ids.length>0) {
                 $.each(obj.ids, function(o, object_id) {
-                    context.partial('templates/result.template', { obj: object_id}, function(rendered) { results += rendered;});
+                    context.partial('templates/result.template', { obj: object_id}, function(rendered) { $search_results.append(rendered)});
                 });
             } else {
-                results += '<li>None found. Please try again...</li>';
+                $search_results.append('<li>None found. Please try again...</li>');
             }
-            results += '</ul>';
-            $search_results.append(results);
+            $search_results.append('</ul>');
         }
 
         /**********************************************************************
@@ -157,7 +156,12 @@
             var search_term = context['params']['search'];
             // Basic validation
             if (search_term.length > 0) {
-                fluidDB.get('objects?query='+escape(search_term), function(data){search_results(data, context);}, true, context.auth);
+                try {
+                    fluidDB.get('objects?query='+escape(search_term), function(data){search_results(data, context);}, true, context.auth);
+                }
+                catch (err) {
+                    $('#search_results').append('<h3>There was a problem with your search :-(<h3><p>Please try again...</p>');
+                }
             } else {
             // oops...
                 alert('You must enter something to search for...');
